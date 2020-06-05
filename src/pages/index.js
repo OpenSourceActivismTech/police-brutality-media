@@ -14,6 +14,7 @@ const MapIndex = ({ data }) => {
       'position': [geom.lat, geom.lng],
       'name': `${n.city}, ${n.state}`,
       'count': g.edges.length,
+      'links': n.links,
     }
   });
 
@@ -44,6 +45,7 @@ export const pageQuery = graphql`
             city
             state
             date
+            links
           }
         }
       }

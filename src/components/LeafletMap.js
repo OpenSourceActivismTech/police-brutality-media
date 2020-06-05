@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Map, TileLayer, Popup } from 'react-leaflet';
 import Marker from 'react-leaflet-enhanced-marker';
-import './leafletmap.css';
+
 import { clip } from '../utils/math';
+import { EmbedContent } from './Embed';
+import './leafletmap.css';
 
 class CircleCounter extends React.Component {
   render() {
@@ -35,6 +37,7 @@ class LeafletMap extends React.Component {
       position: PropTypes.arrayOf(PropTypes.number),
       name: PropTypes.string,
       count: PropTypes.number,
+      links: PropTypes.arrayOf(PropTypes.string),
     }))
   };
 
@@ -65,7 +68,10 @@ class LeafletMap extends React.Component {
                 key={m.slug}
                 icon={<CircleCounter text={m.count} radius={radius} iconAnchor={[radius, 0]}></CircleCounter>}
               >
-                <Popup>{m.name}</Popup>
+                <Popup>
+                  <h2>{m.name}</h2>
+                  <EmbedContent url={m.links[0]} />
+                </Popup>
               </Marker>
               )
             }
