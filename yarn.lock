@@ -16152,6 +16152,11 @@ urql@^1.9.7:
     "@urql/core" "^1.11.0"
     wonka "^4.0.9"
 
+us-state-converter@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/us-state-converter/-/us-state-converter-1.0.5.tgz#9166eb3e766885c7ecb9ecd54dd984f3c3d8bd87"
+  integrity sha512-9nH3y2vpmjm9vt0VyfAUS3809WMQ5NlWoruoRgxN4TjFeVlyqWXnrtbNCBwz/+C2twIWGwo9dgcsD75yI9w1AQ==
+
 use-callback-ref@^1.2.1, use-callback-ref@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.3.tgz#9f939dfb5740807bbf9dd79cdd4e99d27e827756"

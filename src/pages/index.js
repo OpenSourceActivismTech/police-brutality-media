@@ -2,41 +2,48 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 
 import Layout from "../components/PageLayout";
+import LeafletMap from "../components/LeafletMap";
 
-const BlogIndex = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges;
+const MapIndex = ({ data }) => {
+  const locations = data.allPoliceBrutalityVideo.group.map((g)=>{
+    // pull geom from first edge node
+    const n = g.edges[0].node;
+    const geom = n.fields.geocoderGeometry;
+    return {
+      'slug': n.fields.locationSlug,
+      'position': [geom.lat, geom.lng],
+      'count': g.edges.length,
+    }
+  });
+  console.log(locations);
 
   return (
-    <Layout title="gatsby-remark-oembed example">
-      {posts.map(({ node }) => {
-        return (
-          <article key={node.fields.slug}>
-            <h1>
-              <Link style={{ boxShadow: "none" }} to={node.fields.slug}>
-                {node.frontmatter.title}
-              </Link>
-            </h1>
-            <div dangerouslySetInnerHTML={{ __html: node.html }} />
-          </article>
-        );
-      })}
+    <Layout title="Police Brutality Map">
+      <LeafletMap markers={locations} />
     </Layout>
   );
 };
 
-export default BlogIndex;
+export default MapIndex;
 
 export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          html
-          frontmatter {
-            title
+  query mapQuery {
+    allPoliceBrutalityVideo {
+      group(field: fields___locationSlug) {
+        edges {
+          node {
+            id
+            fields {
+              locationSlug
+              geocoderGeometry {
+                lng
+                lat
+              }
+            }
+            name
+            city
+            state
+            date
           }
         }
       }

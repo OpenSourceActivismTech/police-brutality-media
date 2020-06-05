@@ -1,5 +1,7 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+const slugify = require("slugify");
+const states = require('us-state-converter');
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -61,6 +63,22 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: `slug`,
       node,
       value: `${relativeFilePath}`
+    });
+  }
+
+  if (node.internal.type === `PoliceBrutalityVideo`) {
+    // create composite city-state slug for grouping
+    const { city, state } = node;
+    const citySlug = slugify(city.replace('.','').toLowerCase());
+    const stateAbbr = states.abbr(state).toLowerCase();
+    var locationSlug = `${citySlug}-${stateAbbr}`;
+    if (stateAbbr === "no abbreviation found with that state name") {
+      locationSlug = 'unknown-location';
+    }
+    createNodeField({
+      name: `locationSlug`,
+      node,
+      value: locationSlug
     });
   }
 };
