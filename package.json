@@ -1,0 +1,61 @@
+{
+  "name": "replace-the-police",
+  "description": "Replace the Police",
+  "version": "0.0.1",
+  "author": "Josh Levinger (jlev)",
+  "dependencies": {
+    "@mdx-js/mdx": "^1.5.3",
+    "@mdx-js/react": "^1.5.3",
+    "@raae/gatsby-remark-oembed": "^0.1.1",
+    "gatsby": "^2.23.0",
+    "gatsby-plugin-mdx": "^1.0.64",
+    "gatsby-plugin-react-leaflet": "^2.0.13",
+    "gatsby-plugin-sharp": "^2.0.5",
+    "gatsby-plugin-typography": "^2.2.0",
+    "gatsby-remark-copy-linked-files": "^2.0.5",
+    "gatsby-remark-images": "^2.0.1",
+    "gatsby-remark-responsive-iframe": "^2.0.5",
+    "gatsby-source-apiserver": "2.1.5",
+    "gatsby-source-filesystem": "^2.0.1",
+    "gatsby-transformer-opencage-geocoder": "^1.0.0",
+    "gatsby-transformer-remark": "^2.2.0",
+    "gatsby-transformer-sharp": "^2.1.1",
+    "leaflet": "^1.6.0",
+    "opencage-api-client": "^0.7.1",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-leaflet": "^2.7.0",
+    "react-typography": "^0.16.13",
+    "typeface-merriweather": "0.0.43",
+    "typeface-montserrat": "0.0.43",
+    "typography": "^0.16.17",
+    "typography-theme-wordpress-2016": "^0.15.10"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.11.1",
+    "gh-pages": "^1.2.0",
+    "prettier": "^1.14.2"
+  },
+  "homepage": "http://github.com/opensourceactivismtech/replace-the-police",
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/opensourceactivismtech/replace-the-police"
+  },
+  "scripts": {
+    "dev": "rm -r -f .cache && gatsby develop",
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
+    "develop": "gatsby develop",
+    "build": "rm -r -f .cache && gatsby build",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+  }
+}
