@@ -2,3 +2,19 @@
   height: 800px;
   width: 100%;
 }
+
+.leaflet-popup {
+    position: relative;
+    text-align: center;
+}
+
+.leaflet-popup-tip-container {
+    width: 40px;
+    height: 20px;
+    position: relative;
+    left: calc(50% - 25px);
+    top: -62px;
+    overflow: hidden;
+    pointer-events: none;
+    transform: rotate(180deg);
+}

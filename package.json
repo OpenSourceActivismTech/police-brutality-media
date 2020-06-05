@@ -25,6 +25,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-leaflet": "^2.7.0",
+    "react-leaflet-enhanced-marker": "^1.0.15",
     "react-typography": "^0.16.13",
     "slugify": "^1.4.0",
     "typeface-merriweather": "0.0.43",

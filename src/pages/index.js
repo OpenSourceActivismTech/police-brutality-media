@@ -12,10 +12,10 @@ const MapIndex = ({ data }) => {
     return {
       'slug': n.fields.locationSlug,
       'position': [geom.lat, geom.lng],
+      'name': `${n.city}, ${n.state}`,
       'count': g.edges.length,
     }
   });
-  console.log(locations);
 
   return (
     <Layout title="Police Brutality Map">

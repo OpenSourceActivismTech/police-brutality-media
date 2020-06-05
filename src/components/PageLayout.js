@@ -9,7 +9,8 @@ const PageLayout = ({ children, title }) => {
       style={{
         marginLeft: "auto",
         marginRight: "auto",
-        maxWidth: rhythm(50),
+        background: "black",
+        color: "white",
         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
       }}
     >
