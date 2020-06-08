@@ -1,18 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
-
-import { rhythm } from "../utils/typography";
+import GlobalWrapper from "./GlobalLayout";
+import { rhythm, scale } from "../utils/typography";
 
 const PostLayout = ({ children, next, previous, location }) => {
   return (
-    <div
-      style={{
-        marginLeft: "auto",
-        marginRight: "auto",
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
-      }}
-    >
+    <GlobalWrapper>
       <h1>
         <Link to={"/"}>
           Police Brutality
@@ -21,8 +14,8 @@ const PostLayout = ({ children, next, previous, location }) => {
       <h2>
         {`in ${location}`}
       </h2>
-      {children} 
-    </div>
+        {children} 
+    </GlobalWrapper>
   );
 };
 

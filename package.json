@@ -9,6 +9,7 @@
     "@raae/gatsby-remark-oembed": "^0.1.1",
     "gatsby": "^2.23.0",
     "gatsby-plugin-mdx": "^1.0.64",
+    "gatsby-plugin-react-helmet": "^3.3.3",
     "gatsby-plugin-react-leaflet": "^2.0.13",
     "gatsby-plugin-sharp": "^2.0.5",
     "gatsby-plugin-typography": "^2.2.0",
@@ -24,6 +25,7 @@
     "opencage-api-client": "^0.7.1",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
+    "react-helmet": "^6.1.0",
     "react-leaflet": "^2.7.0",
     "react-leaflet-enhanced-marker": "^1.0.15",
     "react-typography": "^0.16.13",
@@ -31,7 +33,7 @@
     "typeface-merriweather": "0.0.43",
     "typeface-montserrat": "0.0.43",
     "typography": "^0.16.17",
-    "typography-theme-wordpress-2016": "^0.15.10",
+    "typography-theme-parnassus": "^0.16.19",
     "us-state-converter": "^1.0.5"
   },
   "devDependencies": {
