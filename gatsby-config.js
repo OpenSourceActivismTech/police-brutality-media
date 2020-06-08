@@ -7,7 +7,7 @@ module.exports = {
     title: "ReplaceThePolice.org",
     author: "jlev",
     description: "A site documenting police brutality in America in 2020",
-    siteUrl: "https://replacethepolice.org/"
+    siteUrl: "https://policebruality.media/"
   },
   pathPrefix: "/",
   plugins: [

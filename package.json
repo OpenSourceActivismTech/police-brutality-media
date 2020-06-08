@@ -1,6 +1,6 @@
 {
-  "name": "replace-the-police",
-  "description": "Replace the Police",
+  "name": "police-brutality-media",
+  "description": "Police Brutality Media and Map",
   "version": "0.0.1",
   "author": "Josh Levinger (jlev)",
   "dependencies": {
@@ -41,7 +41,7 @@
     "gh-pages": "^1.2.0",
     "prettier": "^1.14.2"
   },
-  "homepage": "http://github.com/opensourceactivismtech/replace-the-police",
+  "homepage": "http://github.com/opensourceactivismtech/police-brutality-media",
   "keywords": [
     "gatsby"
   ],
@@ -49,7 +49,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "http://github.com/opensourceactivismtech/replace-the-police"
+    "url": "http://github.com/opensourceactivismtech/police-brutality-media"
   },
   "scripts": {
     "dev": "gatsby develop",
