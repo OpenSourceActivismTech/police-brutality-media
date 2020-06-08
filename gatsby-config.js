@@ -1,6 +1,9 @@
 require("dotenv").config();
 
-const { GEOCODER_KEY } = process.env;
+const {
+  GEOCODER_KEY,
+  GOOGLE_ANALYTICS_ID,
+} = process.env;
 
 module.exports = {
   siteMetadata: {
@@ -86,6 +89,12 @@ module.exports = {
       options: {
         pathToConfigModule: "src/utils/typography"
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: GOOGLE_ANALYTICS_ID,
+      },
     },
     `gatsby-plugin-react-helmet`
   ]
