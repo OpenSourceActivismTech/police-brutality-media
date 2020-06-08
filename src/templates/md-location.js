@@ -5,7 +5,6 @@ import Layout from "../components/PostLayout";
 
 const MdLocationTemplate = ({ data, pageContext }) => {
   const videos = data.allPoliceBrutalityVideo.nodes;
-  console.log(videos);
 
   return (
     <Layout {...pageContext}>

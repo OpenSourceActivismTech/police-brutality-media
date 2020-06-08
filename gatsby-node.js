@@ -78,37 +78,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create location and incident pages
   const mdLocations = locationResults.data.allPoliceBrutalityVideo.group;
   const mdLocationTemplate = path.resolve("./src/templates/md-location.js");
-  const mdIncidentTemplate = path.resolve("./src/templates/md-incident.js");
 
   mdLocations.forEach(({ nodes }) => {
     // base page for each location
     const locationSlug = `${nodes[0].fields.slug}`;
     const locationName = `${nodes[0].city}, ${nodes[0].fields.stateAbbr.toUpperCase()}`;
     createPage({
-        path: `/${locationSlug}`,
-        component: mdLocationTemplate,
-        context: {
-          slug: locationSlug,
-          location: locationName,
-        }
-      });
-
-    // and then sub-pages for incidents (by uuid?)
-    nodes.forEach((node, index) => {
-      const previous =
-        index === nodes.length - 1 ? null : nodes[index + 1].node;
-      const next = index === 0 ? null : nodes[index - 1].node;
-      const incidentSlug = `${node.fields.locationSlug}/${index}`;
-
-      createPage({
-        path: `/${incidentSlug}`,
-        component: mdIncidentTemplate,
-        context: {
-          slug: incidentSlug,
-          previous,
-          next
-        }
-      });
+      path: `/${locationSlug}`,
+      component: mdLocationTemplate,
+      context: {
+        slug: locationSlug,
+        location: locationName,
+      }
     });
   });
 };

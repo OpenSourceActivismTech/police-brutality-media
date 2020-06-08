@@ -49,6 +49,10 @@ class LeafletMap extends React.Component {
   };
 
   render() {
+    // avoid errors when server-side rendering
+    if (typeof window === 'undefined') {
+      return <div />
+    } else {
       return (
         <Map
           center={this.props.position}
@@ -78,6 +82,7 @@ class LeafletMap extends React.Component {
           )}
         </Map>
       );
+    }
   }
 };
 

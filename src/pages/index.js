@@ -22,7 +22,6 @@ const MapIndex = ({ data }) => {
     }
   }).filter((item) => item);
   // remove items without geometry
-  console.log(locations);
 
   return (
     <Layout title="Police Brutality Map">

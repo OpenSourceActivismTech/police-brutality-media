@@ -1,6 +1,7 @@
 ---
 title: Twitter Embed
 date: "2018-10-03"
+slug: test
 ---
 
 Embedded tweet!
