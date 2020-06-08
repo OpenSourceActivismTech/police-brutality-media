@@ -55,7 +55,13 @@ module.exports = {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
               withPrefix: false,
-              providers: { }
+              providers: {
+                settings: {
+                  Twitter: {
+                    theme: "dark"
+                  },
+                }
+              }
             }
           },
           {

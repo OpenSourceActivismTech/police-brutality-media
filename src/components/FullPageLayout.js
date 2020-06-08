@@ -5,7 +5,7 @@ import { rhythm, scale } from "../utils/typography";
 
 const PageLayout = ({ children, title }) => {
   return (
-    <GlobalWrapper>
+    <GlobalWrapper title={title}>
       <h1
         style={{
           ...scale(1.5),

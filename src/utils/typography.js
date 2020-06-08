@@ -7,6 +7,9 @@ theme.overrideThemeStyles = () => ({
   'a': {
     color: "white",
     },
+  'blockquote': {
+    color: "white",
+  },
 });
 
 const typography = new Typography(theme);

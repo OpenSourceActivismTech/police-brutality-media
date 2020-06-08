@@ -27,7 +27,7 @@ const PostLayout = ({ children, next, previous, location }) => {
           ...scale(1.5),
           display: "inline",
         }}>
-          {` in ${location}`}
+          { location && ` in ${location}`}
         </h2>
           {children} 
       </div>
