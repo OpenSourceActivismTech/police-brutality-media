@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "gatsby";
-import { Map, TileLayer, Popup } from 'react-leaflet';
+import { Link, navigate } from "gatsby";
+import { Map, TileLayer, Tooltip, ZoomControl } from 'react-leaflet';
 import Marker from 'react-leaflet-enhanced-marker';
 
 import { clip } from '../utils/math';
@@ -56,11 +56,13 @@ class LeafletMap extends React.Component {
           center={this.props.position}
           zoom={this.props.zoom}
           minZoom={this.props.minZoom}
-          maxZoom={this.props.maxZoom}>
+          maxZoom={this.props.maxZoom}
+          zoomControl={false}>
           <TileLayer
             url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png"
-            attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            attribution='Map <a href="http://stamen.com">Stamen Design</a> <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           />
+          <ZoomControl position='bottomright' />
           {this.props.markers.map( (m) => {
             let radius = clip(m.count, 10, 50);
             return (
@@ -68,12 +70,14 @@ class LeafletMap extends React.Component {
                 position={m.position}
                 key={m.slug}
                 icon={<CircleCounter text={m.count} radius={radius} iconAnchor={[radius, 0]}></CircleCounter>}
+                onClick={() => {
+                  navigate(m.slug);
+                }}
               >
-                <Popup>
+                <Tooltip>
                   <Link to={m.slug}>{m.name}</Link>
                   <div>{m.date}</div>
-                  <div>tags</div>
-                </Popup>
+                </Tooltip>
               </Marker>
               )
             }

@@ -1,12 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/PageLayout";
+import Layout from "../components/FullPageLayout";
 import LeafletMap from "../components/LeafletMap";
 
 const MapIndex = ({ data }) => {
   const locations = data.allPoliceBrutalityVideo.group.map((g)=>{
-    // pull geom from first edge node (sort by date?)
+    // pull geom from first edge node (sorted by date)
     const n = g.edges[0].node;
     const geom = n.fields.geocoderGeometry;
     if (geom && geom.lat && geom.lng) {
@@ -34,7 +34,7 @@ export default MapIndex;
 
 export const pageQuery = graphql`
   query mapQuery {
-    allPoliceBrutalityVideo {
+    allPoliceBrutalityVideo(sort: {fields: date, order: DESC}) {
       group(field: fields___slug) {
         edges {
           node {

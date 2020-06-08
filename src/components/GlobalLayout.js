@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from 'react-helmet';
-import { rhythm } from "../utils/typography";
 
 const GlobalWrapper = ({children}) => {
   return (
@@ -10,7 +9,6 @@ const GlobalWrapper = ({children}) => {
         marginRight: "auto",
         background: "black",
         color: "white",
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
       }}
     >
       <Helmet>

@@ -9,16 +9,19 @@ const PageLayout = ({ children, title }) => {
       <h1
         style={{
           ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-          color: "white",
+          margin: `${rhythm(0.5)} ${rhythm(0.75)}`,
+          color: "black",
+          textShadow: "2px 2px red",
+          position: "absolute",
+          zIndex: 1,
         }}
       >
         <Link
           style={{
             boxShadow: "none",
             textDecoration: "none",
-            color: "inherit"
+            color: "inherit",
+
           }}
           to={"/"}
         >
