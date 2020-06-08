@@ -26,13 +26,6 @@ module.exports = {
         auth: false,
         name: 'PoliceBrutalityVideo',
         entityLevel: `data`,
-        schemaType: {
-            date: `Date`,
-            name: `String`,
-            state: `String`,
-            city: `String`,
-            links: [`String`]
-        },
       },
     },
     {

@@ -2,20 +2,23 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/PostLayout";
-import { rhythm } from "../utils/typography";
 
 const MdLocationTemplate = ({ data, pageContext }) => {
-  const post = data.markdownRemark;
-  console.log(data);
+  const videos = data.allPoliceBrutalityVideo.nodes;
+  console.log(videos);
 
   return (
     <Layout {...pageContext}>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      <hr
-        style={{
-          marginBottom: rhythm(1)
-        }}
-      />
+      { videos.map((video) => {
+        const embed = video.childPoliceBrutalityVideoMarkdownBody.childMarkdownRemark;
+        return (
+          <article>
+            <h3>{video.name}</h3>
+            <h4>{video.date}</h4>
+            <div dangerouslySetInnerHTML={{ __html: embed.html }} />
+          </article>
+        )
+      })}
     </Layout>
   );
 };
@@ -23,11 +26,19 @@ const MdLocationTemplate = ({ data, pageContext }) => {
 export default MdLocationTemplate;
 
 export const pageQuery = graphql`
-  query MdLocationBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt
-      html
+query MdLocationBySlug($slug: String!) {
+  allPoliceBrutalityVideo(filter: {fields: {slug: {eq: $slug}}}) {
+    nodes {
+      name
+      city
+      state
+      childPoliceBrutalityVideoMarkdownBody {
+        childMarkdownRemark {
+          html
+        }
+      }
+      date(formatString: "MMM Do, YYYY")
     }
   }
+}
 `;

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "gatsby";
 import { Map, TileLayer, Popup } from 'react-leaflet';
 import Marker from 'react-leaflet-enhanced-marker';
 
 import { clip } from '../utils/math';
-import { EmbedContent } from './Embed';
 import './leafletmap.css';
 
 class CircleCounter extends React.Component {
@@ -37,7 +37,6 @@ class LeafletMap extends React.Component {
       position: PropTypes.arrayOf(PropTypes.number),
       name: PropTypes.string,
       count: PropTypes.number,
-      links: PropTypes.arrayOf(PropTypes.string),
     }))
   };
 
@@ -58,7 +57,7 @@ class LeafletMap extends React.Component {
           maxZoom={this.props.maxZoom}>
           <TileLayer
             url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png"
-            attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           />
           {this.props.markers.map( (m) => {
             let radius = clip(m.count, 10, 50);
@@ -69,8 +68,9 @@ class LeafletMap extends React.Component {
                 icon={<CircleCounter text={m.count} radius={radius} iconAnchor={[radius, 0]}></CircleCounter>}
               >
                 <Popup>
-                  <h2>{m.name}</h2>
-                  <EmbedContent url={m.links[0]} />
+                  <Link to={m.slug}>{m.name}</Link>
+                  <div>{m.date}</div>
+                  <div>tags</div>
                 </Popup>
               </Marker>
               )
