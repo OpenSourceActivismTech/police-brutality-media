@@ -25,19 +25,19 @@ const MdLocationTemplate = ({ data, pageContext }) => {
 export default MdLocationTemplate;
 
 export const pageQuery = graphql`
-query MdLocationBySlug($slug: String!) {
-  allPoliceBrutalityVideo(filter: {fields: {slug: {eq: $slug}}}) {
-    nodes {
-      name
-      city
-      state
-      childPoliceBrutalityVideoMarkdownBody {
-        childMarkdownRemark {
-          html
+  query MdLocationBySlug($slug: String!) {
+    allPoliceBrutalityVideo(filter: {fields: {slug: {eq: $slug}}}, sort: {fields: date, order: DESC}) {
+      nodes {
+        name
+        city
+        state
+        childPoliceBrutalityVideoMarkdownBody {
+          childMarkdownRemark {
+            html
+          }
         }
+        date(formatString: "MMM Do, YYYY")
       }
-      date(formatString: "MMM Do, YYYY")
     }
   }
-}
 `;
