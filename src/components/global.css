@@ -1,0 +1,30 @@
+html {
+    background: black;
+}
+
+h1.logo {
+    position: absolute;
+    z-index: 1;
+}
+
+h1.logo a {
+    color: black;
+    box-shadow: none;
+}
+
+nav {
+    position: absolute;
+    z-index: 1;
+}
+
+nav.bottom {
+    bottom: 0;
+}
+
+nav a {
+    color: red;
+    text-decoration: none;
+    box-shadow: none;
+    display: inline-block;
+    font-family: "Merriweather Sans", sans-serif;
+}

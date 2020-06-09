@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from 'react-helmet';
+import './global.css';
 
 const GlobalWrapper = ({children, title}) => {
   return (
