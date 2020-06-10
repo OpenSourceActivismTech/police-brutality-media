@@ -61,7 +61,7 @@ class LeafletMap extends React.Component {
           <TileLayer
             url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png"
             attribution={'Map Design <a href="http://stamen.com">Stamen</a> <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'+
-              '<br/>Data <a href="https://github.com/2020PB/police-brutality/">Police Brutality</a> | Code <a href="https://opensourceactivism.tech/">OpenSourceActivism</a>'
+              '<br/>Data <a href="https://github.com/2020PB/police-brutality/">Police Brutality</a> | Code <a href="https://github.com/opensourceactivismtech/police-brutality-media">OpenSourceActivism</a>'
             }
           />
           <ZoomControl position='bottomright' />
