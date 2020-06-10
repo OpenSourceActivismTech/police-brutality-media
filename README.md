@@ -1,6 +1,6 @@
 # Police Brutality Media
 
-This is a map and video visualization of the data in [police-brutality](https://github.com/2020PB/police-brutality/)
+This is a map and video visualization of police brutality in 2020. Inicidents collected by [r/2020PoliceBrutality](https://www.reddit.com/r/2020PoliceBrutality/) on Reddit, made available on [GitHub]((https://github.com/2020PB/police-brutality/). Number of sworn officers from [DHS](https://hifld-geoplatform.opendata.arcgis.com/datasets/local-law-enforcement-locations), agency chiefs from [Major Chiefs Association](https://www.majorcitieschiefs.com/members.php), local government officials from [US Council of Mayors](https://github.com/opensourceactivismtech/us-mayors).
 
 Uses [React-Leaflet](https://react-leaflet.js.org), [gatsby-remark-oembed](https://github.com/raae/gatsby-remark-oembed) and is based on the [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog).
 

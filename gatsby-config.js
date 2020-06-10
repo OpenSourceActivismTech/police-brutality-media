@@ -7,7 +7,7 @@ const {
 
 module.exports = {
   siteMetadata: {
-    title: "ReplaceThePolice.org",
+    title: "PoliceBruality.media",
     author: "jlev",
     description: "A site documenting police brutality in America in 2020",
     siteUrl: "https://policebruality.media/"
@@ -21,6 +21,14 @@ module.exports = {
         name: "posts"
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/`,
+      },
+    },
+    `gatsby-transformer-csv`,
     {
       resolve: 'gatsby-source-apiserver',
       options: {

@@ -13,7 +13,7 @@ const MapIndex = ({ data }) => {
       return {
         'slug': n.fields.slug,
         'position': [geom.lat, geom.lng],
-        'name': `${n.city}, ${n.fields.stateAbbr.toUpperCase()}`,
+        'name': `${n.city}, ${n.fields.stateAbbr}`,
         'count': g.edges.length,
         'date': n.date,
       }

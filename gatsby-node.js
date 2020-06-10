@@ -80,15 +80,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const mdLocationTemplate = path.resolve("./src/templates/md-location.js");
 
   mdLocations.forEach(({ nodes }) => {
-    // base page for each location
-    const locationSlug = `${nodes[0].fields.slug}`;
-    const locationName = `${nodes[0].city}, ${nodes[0].fields.stateAbbr.toUpperCase()}`;
+    const node = nodes[0]; // create single location node for each group
+    const locationName = `${node.city}, ${node.fields.stateAbbr}`;
     createPage({
-      path: `/${locationSlug}`,
+      path: `/${node.fields.slug}`,
       component: mdLocationTemplate,
       context: {
-        slug: locationSlug,
+        slug: node.fields.slug,
         location: locationName,
+        city: node.city,
+        CITY: node.city ? node.city.toUpperCase() : '',
+        // agencies data have city as all uppercase, easier to transform here than do case-insensitive search
+        state: node.fields.stateAbbr,
+        state_name: states(node.fields.stateAbbr).name
       }
     });
   });
@@ -108,8 +112,8 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
   } else if (node.internal.type === `PoliceBrutalityVideo`) {
     // create composite city-state slug for grouping
     const { city, state } = node;
-    let citySlug = city ? slugify(city.replace('.','').toLowerCase()) : '';
-    let stateAbbr = states.abbr(state).toLowerCase();
+    let citySlug = city ? slugify(city.replace('.','')) : '';
+    let stateAbbr = states.abbr(state);
     var locationSlug;
     
     if (stateAbbr === "no abbreviation found with that state name") {
@@ -117,7 +121,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
       locationSlug = 'unknown-location';
     } else {
       if (citySlug) {
-        locationSlug = `${citySlug}-${stateAbbr}`;
+        locationSlug = `${citySlug}-${stateAbbr}`.toLowerCase();
       } else {
         locationSlug = stateAbbr;
       }
