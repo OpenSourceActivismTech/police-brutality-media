@@ -7,23 +7,20 @@ import Marker from 'react-leaflet-enhanced-marker';
 import { clip } from '../utils/math';
 import './leafletmap.css';
 
-class CircleCounter extends React.Component {
-  render() {
-    const markerStyle = {
-      backgroundColor: "red",
-      color: "white",
-      display: "flex",
-      justifyContent: "center",
-      position: "relative",
-      left: `${this.props.radius*2}px`,
-      width: `${this.props.radius*2}px`,
-      height: `${this.props.radius*2}px`,
-      borderRadius: `${this.props.radius*2}px`,
-      alignItems: "center"
-    };
-    return <div style={markerStyle}>{this.props.text}</div>;
-  }
-}
+const CircleCounter = ({radius, text}) => (
+  <div style={{
+    backgroundColor: "red",
+    color: "white",
+    display: "flex",
+    justifyContent: "center",
+    position: "relative",
+    left: `${radius*2}px`,
+    width: `${radius*2}px`,
+    height: `${radius*2}px`,
+    borderRadius: `${radius*2}px`,
+    alignItems: "center"
+  }}>{text}</div>
+)
 
 class LeafletMap extends React.Component {
   static propTypes = {
