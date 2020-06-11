@@ -13,8 +13,11 @@ const MdLocationTemplate = ({ data, pageContext }) => {
   const chief = data.allChiefsCsv.nodes[0];
   const agencies = data.allAgenciesCsv.nodes;
 
-  // match chief to agency by name
-  const chiefAgency = agencies.find(elem => elem.NAME === chief.agency.toUpperCase());
+  var chiefAgency;
+  if (chief) {
+    // match chief to agency by name
+    chiefAgency = agencies.find(elem => elem.NAME === chief.agency.toUpperCase());
+  }
 
   const embeds = videos.map((video) => (
     <Embed item={video.childPoliceBrutalityVideoMarkdownBody.childMarkdownRemark} />
@@ -37,15 +40,14 @@ const MdLocationTemplate = ({ data, pageContext }) => {
           <h3>{chief.name}</h3>
           <img src={chief.img_url} alt={chief.name} />
           <div>{chief.agency}</div>
-          { (chiefAgency.FTSWORN > 0) && (
+          { chiefAgency && (chiefAgency.FTSWORN > 0) && (
             <div>{chiefAgency.FTSWORN} Sworn Officers</div>
           )}
-          { phoneToDigits(chiefAgency.TELEPHONE) && (
+          { chiefAgency && phoneToDigits(chiefAgency.TELEPHONE) && (
             <a href={`tel:${phoneToDigits(chiefAgency.TELEPHONE)}`}>{chiefAgency.TELEPHONE}</a>
           )}
         </section>
         )}
-        { agencies && (
         <section id="share">
           <h3>Share</h3>
           <div>
@@ -64,7 +66,6 @@ const MdLocationTemplate = ({ data, pageContext }) => {
             </a>
           </div>
         </section>
-        )}
       </div>
     </Layout>
   );
@@ -104,17 +105,14 @@ export const pageQuery = graphql`
       nodes {
         name
         agency
-        website
         img_url
       }
     }
 
     allAgenciesCsv(filter: {CITY: {eq: $CITY}, STATE: {eq: $state}}, sort: {fields: NAME, order: ASC}) {
       nodes {
-        ID
         NAME
         TELEPHONE
-        WEBSITE
         FTSWORN
       }
     }
