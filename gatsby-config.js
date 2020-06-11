@@ -47,7 +47,7 @@ module.exports = {
           {
             nodeType: `PoliceBrutalityVideo`,
             addressFields: ['city', 'state'],
-            addFullResult: false,
+            addFullResult: true,
           },
         ],
       },

@@ -82,10 +82,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   mdLocations.forEach(({ nodes }) => {
     const node = nodes[0]; // create single location node for each group
     const locationName = `${node.city}, ${node.fields.stateAbbr}`;
+
     createPage({
       path: `/${node.fields.slug}`,
       component: mdLocationTemplate,
       context: {
+        // gets passed to page query and context
         slug: node.fields.slug,
         location: locationName,
         city: node.city,
