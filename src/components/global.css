@@ -36,6 +36,12 @@ nav a {
 
 .BrainhubCarouselItem {
     align-items: start !important;
+    justify-content: center;
+}
+
+.BrainhubCarouselItem a {
+    word-break: break-word;
+    max-width: 75%;
 }
 
 #take-action {
@@ -57,4 +63,22 @@ nav a {
     flex-direction: column;
     align-items: flex-start;
     max-width: 33%;
+}
+
+@media only screen and (max-width: 768px) {
+    .BrainhubCarouselItem {
+        justify-content: flex-start !important;
+    }
+    #take-action {
+        flex-direction: column;
+    }
+    #take-action section {
+        max-width: 100%;
+    }
+    #take-action img {
+        margin-left: 0;
+    }
+    #take-action h3 {
+        margin-top: 2rem;
+    }
 }
