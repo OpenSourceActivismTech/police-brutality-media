@@ -31,6 +31,7 @@ const MdLocationTemplate = ({ data, pageContext }) => {
         <section id="mayor">
           <h3>Mayor {mayor.name}</h3>
           <img src={mayor.img_url} alt={mayor.name} />
+          <div>Population: {Number(mayor.population).toLocaleString('en-us')}</div>
           <a href={`tel:${phoneToDigits(mayor.phone)}`}>{mayor.phone}</a>
           <a href={`mailto:${mayor.email}`}>{mayor.email}</a>
         </section>
@@ -39,9 +40,13 @@ const MdLocationTemplate = ({ data, pageContext }) => {
         <section id="police-chief">
           <h3>{chief.name}</h3>
           <img src={chief.img_url} alt={chief.name} />
-          <div>{chief.agency}</div>
+          { chiefAgency && (chiefAgency.WEBSITE > 0) ? (
+              <a href="{chief.WEBSITE}">{chief.agency}</a>
+          ) : (
+            <div>{chief.agency}</div>
+          )}
           { chiefAgency && (chiefAgency.FTSWORN > 0) && (
-            <div>{chiefAgency.FTSWORN} Sworn Officers</div>
+            <div>Officers: {Number(chiefAgency.FTSWORN).toLocaleString('en-us')}</div>
           )}
           { chiefAgency && phoneToDigits(chiefAgency.TELEPHONE) && (
             <a href={`tel:${phoneToDigits(chiefAgency.TELEPHONE)}`}>{chiefAgency.TELEPHONE}</a>
@@ -98,6 +103,7 @@ export const pageQuery = graphql`
         email
         phone
         img_url
+        population
       }
     }
 
@@ -113,6 +119,7 @@ export const pageQuery = graphql`
       nodes {
         NAME
         TELEPHONE
+        WEBSITE
         FTSWORN
       }
     }
