@@ -989,6 +989,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@brainhubeu/react-carousel@^1.18.6":
+  version "1.18.6"
+  resolved "https://registry.yarnpkg.com/@brainhubeu/react-carousel/-/react-carousel-1.18.6.tgz#248b33798f93c410f2e60e10b523582d4ab85aa8"
+  integrity sha512-GnPwZUkikw84qoR9YEoDmtF791fyn0bRbeBe6FpB+BR/YglvhoVmfhuYvKyLnxePrXunS9fTuYUF614uBGeKQQ==
+
 "@emotion/cache@^10.0.27":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"
@@ -7698,14 +7703,6 @@ gatsby-transformer-csv@^2.3.4:
     "@babel/runtime" "^7.10.2"
     bluebird "^3.7.2"
     csvtojson "^1.1"
-
-gatsby-transformer-json@^2.4.5:
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-json/-/gatsby-transformer-json-2.4.5.tgz#75378352fb7e5a67455dff89f7fd7dc6b19a53e0"
-  integrity sha512-IUQC3Rxo0d36mi0QZh+V5yX8hBSOcGA0kbu48woOHeIJmCMjRJ/SBIr3h1OQBGtxrTGvBdxLK8NqHXBOvTsJgg==
-  dependencies:
-    "@babel/runtime" "^7.10.2"
-    bluebird "^3.7.2"
 
 gatsby-transformer-opencage-geocoder@^1.0.0:
   version "1.0.0"

@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/PostLayout";
+import { Embed, EmbedSlider } from "../components/Embed";
 import phoneToDigits from "../utils/phone";
 
 const MdLocationTemplate = ({ data, pageContext }) => {
@@ -10,35 +11,35 @@ const MdLocationTemplate = ({ data, pageContext }) => {
   const chief = data.allChiefsCsv.nodes[0];
   const agencies = data.allAgenciesCsv.nodes;
 
+  const embeds = videos.map((video) => (
+    <Embed item={video.childPoliceBrutalityVideoMarkdownBody.childMarkdownRemark} />
+  ));
+
   return (
     <Layout {...pageContext}>
-      { videos.map((video) => {
-        const embed = video.childPoliceBrutalityVideoMarkdownBody.childMarkdownRemark;
-        return (
-          <article>
-            <h3>{video.name}</h3>
-            <h4>{video.date}</h4>
-            <div dangerouslySetInnerHTML={{ __html: embed.html }} />
-          </article>
-        )
-      })}
-      <div id="responsible">
+      <EmbedSlider slides={embeds} />
+      <div id="take-action">
+      { mayor && (
         <section id="mayor">
-          <h3>{mayor.city}, {mayor.state} Mayor</h3>
-          <div>{mayor.name}</div>
+          <h3>Mayor {mayor.name}</h3>
           <img src={mayor.img_url} alt={mayor.name} />
           <a href={`tel:${phoneToDigits(mayor.phone)}`}>{mayor.phone}</a>
           <a href={`mailto:${mayor.email}`}>{mayor.email}</a>
         </section>
+        )}
+        { chief && (
         <section id="police-chief">
           <h3>{chief.name}</h3>
-          <h4>{chief.agency}</h4>
           <img src={chief.img_url} alt={chief.name} />
+          <div>{chief.agency}</div>
         </section>
+        )}
+        { agencies && (
         <section id="police-agencies">
+          <h3>Police Agencies</h3>
           { agencies.map((agency) => (
-            <div key={agency.NAME}>
-              <h4>{agency.NAME}</h4>
+            <div key={agency.ID}>
+              <div>{agency.NAME}</div>
               { (agency.FTSWORN > 0) && (
                 <div>{agency.FTSWORN} Sworn Officers</div>
               )}
@@ -48,6 +49,7 @@ const MdLocationTemplate = ({ data, pageContext }) => {
             </div>
           ))}
         </section>
+        )}
       </div>
     </Layout>
   );
@@ -59,6 +61,7 @@ export const pageQuery = graphql`
   query MdLocationBySlug($slug: String!, $city: String, $CITY: String, $state: String!, $state_name: String) {
     allPoliceBrutalityVideo(filter: {fields: {slug: {eq: $slug}}}, sort: {fields: date, order: DESC}) {
       nodes {
+        id
         name
         city
         state
@@ -93,6 +96,7 @@ export const pageQuery = graphql`
 
     allAgenciesCsv(filter: {CITY: {eq: $CITY}, STATE: {eq: $state}}, sort: {fields: NAME, order: ASC}) {
       nodes {
+        ID
         NAME
         TELEPHONE
         WEBSITE

@@ -28,3 +28,30 @@ nav a {
     display: inline-block;
     font-family: "Merriweather Sans", sans-serif;
 }
+
+.BrainhubCarousel__trackContainer {
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+.BrainhubCarouselItem {
+    align-items: start !important;
+}
+
+#take-action {
+    display: flex;
+    flex-direction: row;
+}
+
+#take-action h3 {
+    margin-top: 0;
+}
+
+#take-action img {
+    margin: auto;
+}
+
+#take-action section {
+    display: flex;
+    flex-direction: column;
+}
