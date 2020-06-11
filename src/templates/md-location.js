@@ -3,6 +3,8 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/PostLayout";
 import { Embed, EmbedSlider } from "../components/Embed";
+import { FaFacebookSquare, FaTwitterSquare, FaWhatsappSquare } from 'react-icons/fa';
+
 import phoneToDigits from "../utils/phone";
 
 const MdLocationTemplate = ({ data, pageContext }) => {
@@ -10,6 +12,9 @@ const MdLocationTemplate = ({ data, pageContext }) => {
   const mayor = data.allMayorsCsv.nodes[0];
   const chief = data.allChiefsCsv.nodes[0];
   const agencies = data.allAgenciesCsv.nodes;
+
+  // match chief to agency by name
+  const chiefAgency = agencies.find(elem => elem.NAME === chief.agency.toUpperCase());
 
   const embeds = videos.map((video) => (
     <Embed item={video.childPoliceBrutalityVideoMarkdownBody.childMarkdownRemark} />
@@ -32,22 +37,32 @@ const MdLocationTemplate = ({ data, pageContext }) => {
           <h3>{chief.name}</h3>
           <img src={chief.img_url} alt={chief.name} />
           <div>{chief.agency}</div>
+          { (chiefAgency.FTSWORN > 0) && (
+            <div>{chiefAgency.FTSWORN} Sworn Officers</div>
+          )}
+          { phoneToDigits(chiefAgency.TELEPHONE) && (
+            <a href={`tel:${phoneToDigits(chiefAgency.TELEPHONE)}`}>{chiefAgency.TELEPHONE}</a>
+          )}
         </section>
         )}
         { agencies && (
-        <section id="police-agencies">
-          <h3>Police Agencies</h3>
-          { agencies.map((agency) => (
-            <div key={agency.ID}>
-              <div>{agency.NAME}</div>
-              { (agency.FTSWORN > 0) && (
-                <div>{agency.FTSWORN} Sworn Officers</div>
-              )}
-              { phoneToDigits(agency.TELEPHONE) && (
-              <a href={`tel:${phoneToDigits(agency.TELEPHONE)}`}>{agency.TELEPHONE}</a>
-              )}
-            </div>
-          ))}
+        <section id="share">
+          <h3>Share</h3>
+          <div>
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("https://policebrutality.media/"+pageContext.slug)}` }>
+              <FaFacebookSquare /> Facebook
+            </a>
+          </div>
+          <div>
+            <a href={`whatsapp://send?text=${encodeURIComponent("https://policebrutality.media/"+pageContext.slug)}` }>
+              <FaWhatsappSquare /> WhatsApp
+            </a>
+          </div>
+          <div>
+            <a href={`http://www.twitter.com/share?url=${encodeURIComponent("https://policebrutality.media/"+pageContext.slug)}` }>
+              <FaTwitterSquare /> Twitter
+            </a>
+          </div>
         </section>
         )}
       </div>

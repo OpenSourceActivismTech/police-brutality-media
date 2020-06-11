@@ -30,8 +30,8 @@ nav a {
 }
 
 .BrainhubCarousel__trackContainer {
-    max-height: 100vh;
-    overflow-y: scroll;
+    max-height: 70vh;
+    overflow-y: scroll !important;
 }
 
 .BrainhubCarouselItem {
@@ -41,6 +41,7 @@ nav a {
 #take-action {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 #take-action h3 {
@@ -48,10 +49,12 @@ nav a {
 }
 
 #take-action img {
-    margin: auto;
+    margin: 0 auto;
 }
 
 #take-action section {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    max-width: 33%;
 }
