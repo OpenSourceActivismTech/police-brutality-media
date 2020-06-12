@@ -56,6 +56,7 @@ nav a {
 
 #take-action img {
     margin: 0 auto;
+    width: 100%;
 }
 
 #take-action section {
@@ -65,7 +66,41 @@ nav a {
     max-width: 33%;
 }
 
+#share {
+    margin-top: 10px;
+    float: right;
+    padding: 5px 10px 0px 10px;
+}
+#share a {
+    box-shadow: none;
+}
+#share .social-link {
+    display: inline-block;
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+.social-link::before {
+  background: #fff;
+  border-radius: 3px;
+  content: "";
+  display: block;
+  height: calc(100% - 5px);
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  width: calc(100% - 5px);
+  top: 2.5px;
+  left: 2.5px;
+}
+.social-link svg {
+  position: relative;
+  z-index: 1;
+}
+
 @media only screen and (max-width: 768px) {
+    #share a {
+        display: inline;
+    }
     .BrainhubCarouselItem {
         justify-content: flex-start !important;
     }

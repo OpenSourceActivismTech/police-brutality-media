@@ -3,9 +3,9 @@ import { Link } from "gatsby";
 import GlobalWrapper from "./GlobalLayout";
 import { rhythm, scale } from "../utils/typography";
 
-const PostLayout = ({ children, title, description }) => {
+const PostLayout = ({ children, location, description }) => {
   return (
-    <GlobalWrapper title={title} description={description}>
+    <GlobalWrapper title={`Police Brutality in ${location}`} description={description}>
       <div style={{
         padding: `${rhythm(0.5)} ${rhythm(0.75)}`,
       }}>
@@ -24,9 +24,10 @@ const PostLayout = ({ children, title, description }) => {
           </Link>
         </h1>
         <h2 style={{
-          ...scale(1),
+          ...scale(1.5),
+          display: "inline",
         }}>
-          { title }
+          { location && ` in ${location}`}
         </h2>
           {children} 
       </div>

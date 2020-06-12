@@ -8,8 +8,7 @@ const MdPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark;
 
   return (
-    <Layout {...pageContext}>
-      <h1>{post.frontmatter.title}</h1>
+    <Layout {...pageContext} title={post.frontmatter.title}>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <hr
         style={{

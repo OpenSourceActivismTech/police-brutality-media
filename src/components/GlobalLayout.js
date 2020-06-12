@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from 'react-helmet';
 import './global.css';
 
-const GlobalWrapper = ({children, title}) => {
+const GlobalWrapper = ({children, title, description}) => {
   return (
     <div
       style={{
@@ -17,6 +17,7 @@ const GlobalWrapper = ({children, title}) => {
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin=""/>
         <title>{title}</title>
+        <meta name="description" content={description} />
       </Helmet>
       {children}
     </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/PostLayout";
+import Layout from "../components/LocationLayout";
 import { Embed, EmbedSlider } from "../components/Embed";
-import { FaFacebookSquare, FaTwitterSquare, FaWhatsappSquare } from 'react-icons/fa';
+import Share from "../components/Share";
 
 import phoneToDigits from "../utils/phone";
 
@@ -34,20 +34,22 @@ const MdLocationTemplate = ({ data, pageContext }) => {
   ));
 
   return (
-    <Layout {...pageContext}>
+    <Layout {...pageContext} description={`${videos.length} videos of police bruality in Denver`}>
+      <Share url={`https://policebrutality.media/${pageContext.slug}`} />
+
       <EmbedSlider slides={embeds} />
       <div id="take-action">
       { mayor && (
         <section id="mayor">
           <h3>Mayor {mayor.name}</h3>
           <img src={mayor.img_url} alt={mayor.name} />
-          <div>Population: {Number(mayor.population).toLocaleString('en-us')}</div>
           { mayor.phone && (
             <a href={`tel:${phoneToDigits(mayor.phone)}`}>{mayor.phone}</a>
           )}
           { mayor.email && (
             <a href={`mailto:${mayor.email}`}>{mayor.email}</a>
           )}
+          <div>Population: {Number(mayor.population).toLocaleString('en-us')}</div>
         </section>
         )}
         { chief && (
@@ -59,11 +61,11 @@ const MdLocationTemplate = ({ data, pageContext }) => {
           ) : (
             <div>{chief.agency}</div>
           )}
-          { chiefAgency && (chiefAgency.FTSWORN > 0) && (
-            <div>Officers: {Number(chiefAgency.FTSWORN).toLocaleString('en-us')}</div>
-          )}
           { chiefAgency && phoneToDigits(chiefAgency.TELEPHONE) && (
             <a href={`tel:${phoneToDigits(chiefAgency.TELEPHONE)}`}>{chiefAgency.TELEPHONE}</a>
+          )}
+          { chiefAgency && (chiefAgency.FTSWORN > 0) && (
+            <div>Officers: {Number(chiefAgency.FTSWORN).toLocaleString('en-us')}</div>
           )}
         </section>
         )}
@@ -79,25 +81,6 @@ const MdLocationTemplate = ({ data, pageContext }) => {
           )}
         </section>
         )}
-      </div>
-
-      <div id="share">
-        <h3>Share</h3>
-        <div>
-          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("https://policebrutality.media/"+pageContext.slug)}` }>
-            <FaFacebookSquare /> Facebook
-          </a>
-        </div>
-        <div>
-          <a href={`whatsapp://send?text=${encodeURIComponent("https://policebrutality.media/"+pageContext.slug)}` }>
-            <FaWhatsappSquare /> WhatsApp
-          </a>
-        </div>
-        <div>
-          <a href={`http://www.twitter.com/share?url=${encodeURIComponent("https://policebrutality.media/"+pageContext.slug)}` }>
-            <FaTwitterSquare /> Twitter
-          </a>
-        </div>
       </div>
     </Layout>
   );
