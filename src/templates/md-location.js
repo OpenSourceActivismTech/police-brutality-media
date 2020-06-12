@@ -35,7 +35,7 @@ const MdLocationTemplate = ({ data, pageContext }) => {
   ));
 
   return (
-    <Layout {...pageContext} description={`${videos.length} videos of police bruality in Denver`}>
+    <Layout {...pageContext} description={`${videos.length} videos of police bruality in ${pageContext.city}`}>
       <Share url={`https://policebrutality.media/${pageContext.slug}`} />
 
       <EmbedSlider slides={embeds} />
