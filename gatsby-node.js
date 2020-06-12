@@ -118,7 +118,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
     let stateAbbr = states.abbr(state);
     var locationSlug;
     
-    if (stateAbbr === "no abbreviation found with that state name") {
+    if (stateAbbr === "No abbreviation found with that state name") {
       stateAbbr = '';
       locationSlug = 'unknown-location';
     } else {

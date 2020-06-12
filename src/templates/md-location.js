@@ -22,7 +22,8 @@ const MdLocationTemplate = ({ data, pageContext }) => {
 
   // get county from geocoder result on video (put this in node?)
   let geocoderResult = videos[0].fields.geocoderFullResult || {components: {county: ''}};
-  let countyName = geocoderResult.components.county.replace(' County', '').replace(' Parish', '');
+  let county = geocoderResult.components.county || '';
+  let countyName = county.replace(' County', '').replace(' Parish', '');
 
   var sheriff;
   if (countyName) {
