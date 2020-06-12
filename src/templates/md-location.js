@@ -42,7 +42,7 @@ const MdLocationTemplate = ({ data, pageContext }) => {
       { mayor && (
         <section id="mayor">
           <h3>Mayor {mayor.name}</h3>
-          <img src={mayor.img_url} alt={mayor.name} />
+          <div class="cropImage" style={{ backgroundImage: `url(${mayor.img_url})`}} />
           { mayor.phone && (
             <a href={`tel:${phoneToDigits(mayor.phone)}`}>{mayor.phone}</a>
           )}
@@ -55,7 +55,7 @@ const MdLocationTemplate = ({ data, pageContext }) => {
         { chief && (
         <section id="police-chief">
           <h3>{chief.name}</h3>
-          <img src={chief.img_url} alt={chief.name} />
+          <div class="cropImage" style={{ backgroundImage: `url(${chief.img_url})`}} />
           { chiefAgency && (chiefAgency.WEBSITE > 0) ? (
               <a href="{chief.WEBSITE}">{chief.agency}</a>
           ) : (
@@ -72,7 +72,7 @@ const MdLocationTemplate = ({ data, pageContext }) => {
         { sheriff && (
         <section id="county-sheriff">
           <h3>{sheriff.name}</h3>
-          <img src={sheriff.img_url} alt={sheriff.name} />
+          <div class="cropImage" style={{ backgroundImage: `url(${sheriff.img_url})`}} />
           { sheriff.phone && (
             <a href={`tel:${phoneToDigits(sheriff.phone)}`}>{sheriff.phone}</a>
           )}

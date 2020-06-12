@@ -54,9 +54,16 @@ nav a {
     margin-top: 0;
 }
 
-#take-action img {
+#take-action img, #take-action .cropImage {
     margin: 0 auto;
     width: 100%;
+    height: 300px;
+}
+div.cropImage {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    width: ;
 }
 
 #take-action section {
