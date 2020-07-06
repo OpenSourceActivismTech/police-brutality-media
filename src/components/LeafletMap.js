@@ -14,11 +14,12 @@ const CircleCounter = ({radius, text}) => (
     display: "flex",
     justifyContent: "center",
     position: "relative",
-    left: `${radius*2}px`,
+    left: `25px`, // reset the negative margins from leaflet...
+    top: `12.5px`,
     width: `${radius*2}px`,
     height: `${radius*2}px`,
-    borderRadius: `${radius*2}px`,
-    alignItems: "center"
+    borderRadius: `${radius}px`,
+    alignItems: "center",
   }}>{text}</div>
 )
 
@@ -63,12 +64,12 @@ class LeafletMap extends React.Component {
           />
           <ZoomControl position='bottomright' />
           {this.props.markers.map( (m) => {
-            let radius = clip(m.count, 10, 50);
+            let radius = clip(m.count, 10, 30);
             return (
               <Marker
                 position={m.position}
                 key={m.slug}
-                icon={<CircleCounter text={m.count} radius={radius} iconAnchor={[radius, 0]}></CircleCounter>}
+                icon={<CircleCounter text={m.count} radius={radius}></CircleCounter>}
                 onClick={() => {
                   navigate(m.slug);
                 }}
