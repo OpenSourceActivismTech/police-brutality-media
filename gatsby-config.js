@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-apiserver',
       options: {
-        url: `http://api.policebrutality.io/v1/videos`,
+        url: `https://raw.githubusercontent.com/2020PB/police-brutality/data_build/all-locations.json`,
         method: `get`,
         auth: false,
         name: 'PoliceBrutalityVideo',

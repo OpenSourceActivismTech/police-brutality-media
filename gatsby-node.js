@@ -141,7 +141,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
 
     // create text node with links and this node as parent
     // retrieve links from list and join with linebreaks, so we can process their embeds
-    let body = node.links ? node.links.map(l => l.link).join('\n\n') : '';
+    let body = node.links ? node.links.join('\n\n') : '';
     const textNode = {
       id: `${node.id}-MarkdownBody`,
       parent: `${node.id}`,
