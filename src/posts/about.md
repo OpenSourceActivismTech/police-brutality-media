@@ -8,6 +8,6 @@ In the summer of 2020, hundreds of thousands of Americans exercised their first 
 
 Video and photographic evidence of this treatment may be upsetting, but it should not be ignored or forgotten. This site is intended to serve as an archive of this media, and as a call to action to question, defund and dismantle systems of white-supremacy that continue in the United States.
 
-The data has been gathered by users on [Reddit](https://www.reddit.com/r/2020PoliceBrutality) and are stored in [GitHub](https://github.com/2020PB/police-brutality).  
+The data has been gathered by users on [Reddit](https://www.reddit.com/r/2020PoliceBrutality) and are stored in [GitHub](https://github.com/2020PB/police-brutality). Have more to add? Read the [contribution guidelines](https://github.com/2020PB/police-brutality/blob/master/CONTRIBUTING.md) and [submit a report](https://police-brutality-submissions.herokuapp.com).
 
 A project of [OpenSourceActivism.tech](https://www.opensourceactivism.tech).
