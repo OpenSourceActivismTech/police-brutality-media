@@ -40,7 +40,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-opencage-geocoder`,
+      resolve: `gatsby-transformer-geocodio`,
       options: {
         api_key: GEOCODER_KEY,
         nodeTypes: [

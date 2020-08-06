@@ -21,8 +21,8 @@ const MdLocationTemplate = ({ data, pageContext }) => {
   }
 
   // get county from geocoder result on video (put this in node?)
-  let geocoderResult = videos[0].fields.geocoderFullResult || {components: {county: ''}};
-  let county = geocoderResult.components.county || '';
+  let geocoderResult = videos[0].fields.geocoderFullResult || {address_components: {county: ''}};
+  let county = geocoderResult.address_components.county || '';
   let countyName = county.replace(' County', '').replace(' Parish', '');
 
   var sheriff;
@@ -105,7 +105,7 @@ export const pageQuery = graphql`
         date(formatString: "MMM Do, YYYY")
         fields {
           geocoderFullResult {
-            components {
+            address_components {
               county
             }
           }

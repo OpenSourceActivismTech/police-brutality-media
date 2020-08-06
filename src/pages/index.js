@@ -8,11 +8,11 @@ const MapIndex = ({ data }) => {
   const locations = data.allPoliceBrutalityVideo.group.map((g)=>{
     // pull geom from first edge node (sorted by date)
     const n = g.edges[0].node;
-    const geom = n.fields.geocoderGeometry;
-    if (geom && geom.lat && geom.lng) {
+    const loc = n.fields.geocoderLocation;
+    if (loc && loc.lat && loc.lng) {
       return {
         'slug': n.fields.slug,
-        'position': [geom.lat, geom.lng],
+        'position': [loc.lat, loc.lng],
         'name': `${n.city}, ${n.fields.stateAbbr}`,
         'count': g.edges.length,
         'date': n.date,
@@ -41,7 +41,7 @@ export const pageQuery = graphql`
             id
             fields {
               slug
-              geocoderGeometry {
+              geocoderLocation {
                 lng
                 lat
               }
