@@ -10,7 +10,7 @@
     "@raae/gatsby-remark-oembed": "^0.1.1",
     "gatsby": "^2.23.0",
     "gatsby-plugin-google-analytics": "^2.3.3",
-    "gatsby-plugin-mdx": "^1.0.64",
+    "gatsby-plugin-mdx": "^2.14.1",
     "gatsby-plugin-react-helmet": "^3.3.3",
     "gatsby-plugin-react-leaflet": "^2.0.13",
     "gatsby-plugin-sharp": "^2.0.5",
