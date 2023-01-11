@@ -22,7 +22,7 @@
     "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-csv": "^2.3.4",
     "gatsby-transformer-geocodio": "https://github.com/jlev/gatsby-transformer-geocodio.git",
-    "gatsby-transformer-remark": "^2.2.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.1.1",
     "geocodio-library-node": "^1.3.0",
     "leaflet": "^1.6.0",
